@@ -1,0 +1,19 @@
+package me.proiezrush.posionimmune.utility;
+
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+
+
+public class Chat
+{
+  public static Chat getInstance() { return new Chat(); }
+
+  
+  private Config c = Config.getInstance();
+  private FileConfiguration config = this.c.getConfig();
+  
+  public String PREFIX = c(this.config.getString("PREFIX"));
+
+  
+  public String c(String msg) { return ChatColor.translateAlternateColorCodes('&', msg); }
+}
