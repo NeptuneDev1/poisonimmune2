@@ -1,0 +1,25 @@
+package me.proiezrush.posionimmune.timer;
+
+import me.proiezrush.posionimmune.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitScheduler;
+
+public class Checker
+{
+  private Main plugin;
+  
+  public Checker(Main plugin) { this.plugin = plugin; }
+
+  
+  public void init(Player player) {
+    BukkitScheduler scheduler = Bukkit.getScheduler();
+    scheduler.scheduleSyncRepeatingTask((Plugin)this.plugin, () -> {
+          if (player.hasPermission("poison.immune") && 
+            player.hasPotionEffect(PotionEffectType.POISON))
+            player.removePotionEffect(PotionEffectType.POISON); 
+    }, 0, 0 );
+  }
+}
