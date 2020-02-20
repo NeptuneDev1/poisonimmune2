@@ -1,0 +1,25 @@
+package me.proiezrush.posionimmune.utility;
+
+import me.proiezrush.posionimmune.Main;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Config
+{
+  private Main instance = (Main)JavaPlugin.getPlugin(Main.class);
+
+  
+  public static Config getInstance() { return new Config(); }
+
+
+  
+  public FileConfiguration getConfig() { return this.instance.getConfig(); }
+
+
+  
+  public void reloadConfig() { this.instance.reloadConfig(); }
+
+
+  
+  public void saveConfig() { this.instance.saveConfig(); }
+}
